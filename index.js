@@ -51,13 +51,9 @@ app.post("/signin", async (req, res) => {
     // Find the user by email
     const user = await User.findOne({ email });
     if (!user) {
-      // If user is not found, return error
       return res.status(404).send("User not found");
     }
-
-    // Compare passwords
     if (password !== user.password) {
-      // If passwords don't match, return error
       return res.status(401).send("Incorrect password");
     }
 
